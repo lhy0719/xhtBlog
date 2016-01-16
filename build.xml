@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="war" name="zxbPlatform">
+	<property environment="env" />
+	<property file="${basedir}/build.properties" />
+	<path id="project.classpath">
+		<pathelement location="${classes.home}" />
+		<pathelement location="${testClasses.home}" />
+		<fileset dir="${lib.dir}" includes="*.jar" />
+	</path>
+	<target name="init">
+		<delete dir="${deploy.home}" />
+		<mkdir dir="${deploy.home}" />
+		<delete dir="${classes.home}" />
+		<mkdir dir="${classes.home}" />
+		<delete dir="${testClasses.home}" />
+		<mkdir dir="${testClasses.home}" />
+	</target>
+	<target name="compile" depends="init">
+		<javac srcdir="${src.home}" destdir="${classes.home}" debug="false" source="1.6" target="1.6" encoding="UTF-8">
+			<classpath refid="project.classpath" />
+		</javac>
+		<javac srcdir="${test.home}" destdir="${testClasses.home}" debug="false" source="1.6" target="1.6" encoding="UTF-8">
+			<classpath refid="project.classpath" />
+		</javac>
+		<copy todir="${classes.home}">
+			<fileset dir="${src.home}">
+				<include name="**/*.properties" />
+				<include name="**/*.dtd" />
+				<include name="**/*.sql" />
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.groovy" />
+			</fileset>
+		</copy>
+		<copy todir="${testClasses.home}">
+			<fileset dir="${test.home}">
+				<include name="**/*.properties" />
+				<include name="**/*.dtd" />
+				<include name="**/*.sql" />
+				<include name="**/*.xml" />
+			</fileset>
+			<fileset dir="${test.home}">
+				<include name="**/*.ftl" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="test">
+		<delete dir="${test.report}" />
+		<mkdir dir="${test.report}" />
+		<property name="tests" value="Test*" />
+		<junit printsummary="yes" haltonerror="true" haltonfailure="true" fork="true">
+			<classpath refid="project.classpath" />
+			<formatter type="plain" usefile="false" />
+			<formatter type="xml" />
+			<batchtest todir="${test.report}">
+				<fileset dir="${test.home}">
+					<include name="**/${tests}.java" />
+					<include name="**/${tests}.java" />
+					<exclude name="**/Test*All.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	<target name="testReport" depends="test">
+		<mkdir dir="${test.report}/html" />
+		<junitreport todir="${test.report}/html">
+			<fileset dir="${test.report}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report todir="${test.report}/html" />
+		</junitreport>
+	</target>
+	<target name="javadoc">
+		<delete dir="${javadoc.home}" />
+		<mkdir dir="${javadoc.home}" />
+		<javadoc author="true" destdir="${javadoc.home}" package="true" splitindex="true" use="true" version="true" windowtitle="${ant.project.name}" encoding="UTF-8" charset="UTF-8">
+			<classpath refid="project.classpath" />
+			<fileset dir="${src.home}">
+				<include name="**/*.java" />
+			</fileset>
+		</javadoc>
+	</target>
+	<target name="jar" depends="compile">
+		<jar destfile="${deploy.home}/${ant.project.name}_lib-${deploy.jar.version}.jar" compress="true">
+			<fileset dir="${classes.home}">
+				<include name="zxb/modules/**/*.class" />
+			</fileset>
+			<fileset dir="${src.home}">
+				<include name="zxb/modules/**/*.xml" />
+				<include name="config/**/*.xml" />
+			</fileset>
+		</jar>
+		<jar destfile="${deploy.home}/${ant.project.name}_web-${deploy.jar.version}.jar" compress="true">
+			<fileset dir="${classes.home}">
+				<include name="zxb/web/**/*.class" />
+			</fileset>
+			<fileset dir="${src.home}">
+				<include name="zxb/web/**/*.xml" />
+			</fileset>
+		</jar>
+	</target>
+	<target name="hibernateSchemaExport">
+		<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask">
+			<classpath refid="project.classpath" />
+		</taskdef>
+		<mkdir dir="${deploy.home}" />
+		<hibernatetool destdir="${deploy.home}">
+			<annotationconfiguration configurationfile="${database.config}/config/hibernate.cfg.xml" propertyfile="${database.config}/hibernate.properties" />
+			<hbm2ddl export="false" update="false" drop="false" create="false" outputfilename="${ant.project.name}-schemaExport.sql" delimiter=";" format="true" haltonerror="false" />
+		</hibernatetool>
+	</target>
+	<target name="war" depends="jar">
+		<war destfile="${deploy.home}/${ant.project.name}-${deploy.jar.version}.war" webxml="${web.home}/WEB-INF/web.xml">
+			<fileset dir="${web.home}">
+				<exclude name="WEB-INF/classes/" />
+				<exclude name="META-INF/" />
+				<exclude name="scripts/user/" />
+			</fileset>
+			<fileset dir="${deploy.home}">
+				<include name="scripts/user/**/*.js" />
+				<include name="scripts/public/**/*.js" />
+			</fileset>
+			<lib file="${deploy.home}/${ant.project.name}_lib-${deploy.jar.version}.jar" />
+			<lib file="${deploy.home}/${ant.project.name}_web-${deploy.jar.version}.jar" />
+			<lib dir="${runtimeLib.dir}" />
+			<classes dir="${src.home}">
+				<include name="*.properties" />
+				<include name="**/*.ftl" />
+				<include name="**/*.groovy" />
+				<exclude name="log4j.properties" />
+				<include name="*.xml" />
+			</classes>
+		</war>
+		<delete dir="${testClasses.home}" />
+	</target>
+</project>

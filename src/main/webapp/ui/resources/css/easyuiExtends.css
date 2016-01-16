@@ -1,0 +1,89 @@
+body {
+	font-family: arial, '宋体', 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', \5b8b\4f53, Tahoma, Arial, Helvetica, STHeiti ! important;
+}
+.panel .panel-header{
+    height: 25px;
+    background-color:#dff0d8
+}
+.dialog-toolbar{
+	height:35px;
+}
+.menu-item{
+	padding:0px 15px 0px 2px;
+}
+.menu{
+	width:auto !important
+}
+.menu-text, .menu-text span{
+	font-size:15px
+}
+.dialog-toolbar .easyui-menubutton{
+	margin-top:5px
+}
+.datagrid-toolbar .easyui-menubutton{
+	margin-top:5px
+}
+.datagrid-toolbar .l-btn{
+	margin-top:5px
+}
+.panel-header .panel-title{
+	padding-top:5px
+}
+table .easyui-linkbutton{
+	min-width:80px
+}
+.datagrid-toolbar .l-btn{
+	min-width:80px
+}
+.easyui-linkbutton .l-btn-left,.dialog-button .l-btn-left,.messager-button .l-btn-left{
+	width:100% !important
+}
+.tabs{
+	height:30px !important
+}
+.tabs-inner{
+	height: 30px !important;
+    line-height: 30px !important;
+}
+/* .l-btn :hover{
+	background: #207ebc none repeat scroll 0 0;
+	color:#ffffff
+} */
+.datagrid-header-row, .datagrid-row{
+	height:35px;
+}
+.datagrid .datagrid-pager{
+	height:35px;
+}
+.datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber{
+	text-overflow:ellipsis; 
+}
+.datagrid-header-inner{
+	font-weight:bold
+}
+.datagrid-toolbar{
+	height:35px
+}
+.window{
+	padding:3px;
+}
+.textbox{
+	height:25px; !important
+}
+.panel-icon,.menu-icon,.easyui-linkbutton .l-btn-icon,.dialog-button .l-btn-icon,.datagrid-toolbar .l-btn-icon,.easyui-menubutton .l-btn-icon,.menu-line{
+	display:none
+}
+.l-btn-icon-left .l-btn-text{
+	margin:0px 10px
+}
+.datagrid-pager .l-btn-icon-left .l-btn-text{
+	margin:0px 2px
+}
+.menu-text{
+	height:25px;
+	line-height:25px
+}
+.datagrid-btn-separator{
+	  height: 30px;
+	  margin: 0px 5px 0px 5px
+}

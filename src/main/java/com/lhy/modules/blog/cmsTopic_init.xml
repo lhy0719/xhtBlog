@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmsTopics>
+	<cmsTopic topicName="technology" topicFullName="技术分享" topicType="text">
+	</cmsTopic>
+	<cmsTopic topicName="life" topicFullName="生活点滴" topicType="text">
+	</cmsTopic>
+	<cmsTopic topicName="worship" topicFullName="大神日记" topicType="image">
+	</cmsTopic>
+</cmsTopics>

@@ -1,0 +1,106 @@
+<#import "/spring.ftl" as spring />
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html ng-app="blogListPage" ng-controller="blogListController">
+<head>
+<title>个人主页</title> 
+<#include "/html_meta.ftl" parse=true encoding="UTF-8"> 
+<#include "/portal_headCSS.ftl" parse=true encoding="UTF-8">
+<#include "/portal_headJS.ftl" parse=true encoding="UTF-8">
+<script type="text/javascript" src="<@spring.url ''/>/scripts/blog/articleList.js"></script>
+</head>
+<body class="home-template">
+	<div class="container-fluid">
+		<div class="row">
+			<div id="m-nav" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 affix">
+				<div class="row m-nav-container">
+					<div id="m-sidebar" class="col-sm-3 col-md-4 animated fadeIn" style="overflow: hidden; outline: none;">
+						<div class="sidebar-container">
+							<div class="logo-box">
+								<a href="##" class="logo-link" title="he is a good dog.">BLOG</a>
+								<p class="logo-desc">he is a good dog.</p>
+							</div>
+							<ul class="site-nav-box row">
+								<li class="col-md-12 col-xs-4">
+								<a href="<@spring.url ''/>/" class="current_nav">首页</a>
+								</li>
+								<li class="col-md-12 col-xs-4">
+								<a href="<@spring.url ''/>/user/commonUser/goToPortalPage?templateName=blog/article">创作</a>
+								</li><li class="col-md-12 col-xs-4">
+								<a target="_blank" href="mailto:23982448@qq.com">联系</a>
+								</li>
+							</ul>
+							<hr class="site-nav-diver">
+							
+							<p class="site-copyright">
+								© Copyright 2014 - 2015 <a href="<@spring.url ''/>/" title="二蛋">二蛋</a>
+							</p>
+						</div>
+						<div class="sidebar-bg">
+						</div>
+					</div>
+					<div id="m-post-list" class="col-xs-12 col-sm-9 col-md-8" style="overflow: hidden; outline: none; border-right-color: rgb(238, 238, 238);">
+						<article class="post  animated fadeInLeft"
+						style="animation-duration: 0.4s; animation-timing-function: ease-in-out;">
+						<div class="post-wrap">
+							<h2 class="post-title">
+								<a href="/build-scalable-analytics-script/">构建易于扩展的前端统计脚本</a>
+							</h2>
+							<div class="post-content hidden-xs">
+								<p>博客计划更新下阅读样式不太爽暂时先发到这里原文地址：http//www.soulteary.com/2015/09/21/...</p>
+							</div>
+							<div class="post-metadata hidden-xs">
+								<div class="metadata">
+									<ul class="list-inline clearfix">
+										<li class="meta-date"><i class="fa fa-calendar"><span>2015-09-21
+													18:17</span></i></li>
+										<li class="meta-author"><i class="fa fa-user"></i><span><a
+												style="  font-size: 12px;" href="/author/pi/" title="坏蛋">坏蛋</a></span></li>
+										<li class="meta-tags"><i class="fa fa-tags"><span><a
+													href="/tag/tong-ji-jiao-ben/">统计脚本</a></span></i></li>
+										<li class="meta-comments"><i class="fa fa-comments-o"><span><a
+													href="#comment">查看评论</a></span></i></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<i class="fa fa-star featured-star"></i>
+						</article>
+						<nav class="pagination" role="navigation" style="display: block;">
+							<span class="page-number">第 1 页 ⁄ 共 1 页</span>
+						</nav>
+					</div>
+				</div>
+				<div id="ascrail2000" class="nicescroll-rails" style="padding-right: 2px; width: 9px; z-index: auto; cursor: default; position: absolute; top: 0px; left: 140px; height: 327px; display: block; opacity: 0;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(0, 0, 0); background-clip: padding-box;"></div></div>
+				<div id="ascrail2000-hr" class="nicescroll-rails" style="height: 7px; z-index: auto; top: 320px; left: 0px; position: absolute; display: none; opacity: 0; width: 140px;"><div style="position: relative; top: 0px; height: 5px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; left: 0px; background-color: rgb(0, 0, 0); background-clip: padding-box;"></div></div>
+				<div id="ascrail2001" class="nicescroll-rails" style="padding-right: 2px; width: 9px; z-index: 5; cursor: default; position: absolute; top: 0px; left: 438.203px; height: 327px; opacity: 0;"><div style="position: relative; top: 82px; float: right; width: 5px; height: 133px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(0, 0, 0); background-clip: padding-box;"></div></div>
+				<div id="ascrail2001-hr" class="nicescroll-rails" style="height: 7px; z-index: 5; top: 320px; left: 149.203px; position: absolute; display: none; width: 289px; opacity: 0;"><div style="position: relative; top: 0px; height: 5px; width: 298px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(0, 0, 0); background-clip: padding-box;"></div></div>
+			</div>
+			<div id="m-post" class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4">
+				<div class="row">
+					<div class="col-lg-11 col-md-11 col-sm-12 m-post-container" data-body-class="home-template" style="height: auto;">
+						<article class="post tag-tong-ji-jiao-ben published animated fadeInUp"
+							style="animation-duration: 0.6s; animation-timing-function: ease-in-out;">
+							<h2 class="post-title">构建易于扩展的前端统计脚本</h2>
+							<div class="metadata">
+								<ul class="list-inline clearfix">
+									<li class="meta-date"><i class="fa fa-calendar"><span>1个月前</span></i></li>
+									<li class="meta-author"><i class="fa fa-user"></i><span><a
+											style="  font-size: 12px;" href="/author/pi/" title="坏蛋">坏蛋</a></span></li>
+									<li class="meta-tags"><i class="fa fa-tags"><span><a
+												href="/tag/tong-ji-jiao-ben/">统计脚本</a></span></i></li>
+									<li class="meta-comments"><i class="fa fa-comments-o"><span><a
+												href="#comment">查看评论</a></span></i></li>
+								</ul>
+							</div>
+							<div class="post-content">
+								
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /container -->
+</body>
+</html>

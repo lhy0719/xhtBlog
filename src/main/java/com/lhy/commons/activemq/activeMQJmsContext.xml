@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.1.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.1.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-4.1.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd
+		http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.9.0.xsd">
+	<amq:broker brokerId="activeMQ" brokerName="activeMQVMBroker" useJmx="${activeMQ.jms.broker.useJmx}" persistent="${activeMQ.jms.broker.persistent}" start="true">
+		<amq:systemUsage>
+			<amq:systemUsage>
+				<amq:memoryUsage>
+					<amq:memoryUsage limit="${activeMQ.jms.broker.systemUsage.memoryUsage.limit}" />					
+				</amq:memoryUsage>
+				<amq:tempUsage>
+					<amq:tempUsage limit="${activeMQ.jms.broker.systemUsage.tempUsage.limit}"/>
+				</amq:tempUsage>
+				<amq:storeUsage>
+					<amq:storeUsage limit="${activeMQ.jms.broker.systemUsage.storeUsage.limit}"/>
+				</amq:storeUsage>
+			</amq:systemUsage>
+		</amq:systemUsage>
+		<amq:transportConnectors>
+			<amq:transportConnector uri="${activeMQ.jms.transportConnector.uri}" />
+		</amq:transportConnectors>
+		<amq:managementContext>
+			<amq:managementContext connectorPort="${activeMQ.jmx.connectorPort}" jmxDomainName="ActiveMQ" connectorPath="${activeMQ.jmx.connectorPath}">
+			</amq:managementContext>
+		</amq:managementContext>
+	</amq:broker>
+	<amq:connectionFactory id="activeMQConnectionFactory" brokerURL="${activeMQ.jms.activeMQconnectionFactory.brokerURL}" />
+	<amq:topic id="serverTopic" physicalName="${activeMQ.jms.listener.destinationName}" />
+	<amq:topic id="clientTopic" physicalName="${activeMQ.jms.listener.clientDestinationName}" />
+	<bean id="activeMQCachingConnectionFactory"
+		class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="cacheConsumers" value="true" />
+		<property name="cacheProducers" value="true" />
+		<property name="reconnectOnException" value="true" />
+		<property name="sessionCacheSize" value="1" />
+		<property name="clientId" value="${activeMQ.jms.clientId}" />
+		<property name="targetConnectionFactory" ref="activeMQConnectionFactory" />
+	</bean>
+	<bean id="activeMQJmsTransactionManager"
+		class="org.springframework.jms.connection.JmsTransactionManager">
+		<property name="connectionFactory" ref="activeMQCachingConnectionFactory" />
+		<qualifier value="activeMQJmsTransactionManager" />
+	</bean>
+	<bean id="activeMQBaseMessageListenerContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer"
+		abstract="true">
+		<property name="autoStartup" value="true" />
+		<property name="connectionFactory" ref="activeMQCachingConnectionFactory" />
+		<property name="receiveTimeout" value="1000" />
+		<property name="recoveryInterval" value="5000" />
+		<property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE" />
+		<property name="sessionTransacted" value="false" />
+		<property name="transactionManager" ref="activeMQJmsTransactionManager" />
+		<property name="cacheLevelName" value="CACHE_SESSION" />
+		<!-- <property name="exceptionListener" ref="mqExceptionListener"/> -->
+	</bean>
+	<bean id="activeMQParentMessageListenerContainer" parent="activeMQBaseMessageListenerContainer"
+		abstract="true">
+		<property name="concurrency" value="${activeMQ.jms.listener.concurrency}" />
+		<property name="pubSubDomain" value="${activeMQ.jms.listener.isTopic}" />
+		<!-- <property name="subscriptionDurable" value="false"/> -->
+	</bean>
+	<bean id="activeMQMessageListener"
+		class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+		<constructor-arg ref="textMessageDispatcher" />
+		<property name="defaultListenerMethod" value="onReceivedMessage" />
+	</bean>
+	<bean id="activeMQMessageListenerContainer" parent="activeMQParentMessageListenerContainer">
+		<property name="messageListener" ref="activeMQMessageListener" />
+		<property name="destinationName" value="${activeMQ.jms.listener.destinationName}" />
+	</bean>
+	<bean id="baseJmsTemplate" class="org.springframework.jms.core.JmsTemplate"
+		abstract="true">
+		<property name="connectionFactory" ref="activeMQCachingConnectionFactory" />
+		<property name="defaultDestinationName" value="${activeMQ.jms.send.dstinationName}" />
+		<!-- <property name="deliveryMode" value="cachingConnectionFactory"/> <property 
+			name="deliveryPersistent" value="true"/> <property name="priority" value="cachingConnectionFactory"/> -->
+		<property name="sessionAcknowledgeModeName" value="AUTO_ACKNOWLEDGE" />
+	</bean>
+	<bean id="activeMQJmsTemplate" parent="baseJmsTemplate">
+		<property name="pubSubDomain" value="${activeMQ.jms.send.isTopic}" />
+	</bean>
+</beans>

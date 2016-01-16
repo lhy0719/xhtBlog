@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- system start -->		
+		<mapping class="com.lhy.modules.system.domain.CommonUser"/>
+		<mapping class="com.lhy.modules.system.domain.SystemConfig"/>
+		<!-- system end -->
+		<!-- cms start -->		
+		<mapping class="com.lhy.modules.blog.domain.CmsArticle"/>
+		<mapping class="com.lhy.modules.blog.domain.CmsTopic"/>
+		<!-- cms end -->
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,266 @@
+.dialog-button {
+  padding: 5px;
+  text-align: center;
+}
+
+.platform-icon-loginbtn{
+	background:url('../icons/network-server.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-resetbtn{
+	background:url('../icons/edit-undo.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-loginWindow{
+	background:url('../icons/dialog-password.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-sys-config{
+	background:url('../icons/system.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-sys-org{
+	background:url('../icons/applications-system.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-permissionMenuItem{
+	background:url('../icons/office-organizer.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-sys-exit{
+	background:url('../icons/application-exit.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-sys-home{
+	background:url('../icons/user-home.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-sys-help{
+	background:url('../icons/system-help.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-sys-developerMenuItem{
+	background:url('../icons/help-contents.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-sys-aboutMenuItem{
+	background:url('../icons/help-about.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-newOrgTree{
+	background:url('../icons/system-users.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-userGroupWindow{
+	background:url('../icons/user-home.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-submitUserGroupBtn{
+	background:url('../icons/dialog-apply.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-delete{
+	background:url('../icons/edit-delete.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-edit{
+	background:url('../icons/utilities-text-editor.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-editUserGroupTools{
+	background:url('../icons/accessories-text-editor.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-personWindow{
+	background:url('../icons/system-users.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-addExistPersonMenuItem{
+	background:url('../icons/im.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-eidtUserGroupMenuItem{
+	background:url('../icons/office-writer.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-editPersonMenuItem{
+	background:url('../icons/utilities-text-editor.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-assignUserMenuItem{
+	background:url('../icons/assignUser.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-assignUserForPersonWindow{
+	background:url('../icons/assignUser.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-deleteAssignUserBtn{
+	background:url('../icons/dialog-cancel.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-moveup{
+	background:url('../icons/go-up.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-movedown{
+	background:url('../icons/go-down.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-person-hasUser{
+	background:url('../icons/system-users.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-person-hasNoUser{
+	background:url('../icons/im.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-help-addHelpCatalogMenuItem{
+	background:url('../icons/user-home.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-help-eidtHelpCatalogMenuItem{
+	background:url('../icons/office-writer.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-help-addHelpContentMenuItem{
+	background:url('../icons/bookmark-new.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-helpCatalogWindow{
+	background:url('../icons/office-writer.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-help-editHelpContentMenuItem{
+	background:url('../icons/utilities-text-editor.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-help-editHelpContent{
+	background:url('../icons/utilities-text-editor.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-help-content{
+	background:url('../icons/document-save-as.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-help-exportHelpMenuItem{
+	background:url('../icons/internet-download-manager.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-icon-submitBtn{
+	background:url('../icons/dialog-apply.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-helpContentWindow{
+	background:url('../icons/office-writer.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-org-cmsMenuItem{
+	background:url('../icons/utilities-text-editor.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-cms-getArticleMenuItem{
+	background:url('../icons/utilities-text-editor.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-cms-deleteArticleMenuItem{
+	background:url('../icons/edit-delete.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-fileManager-fileType{
+	background:url('../icons/document-folder.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-fileManager-serverFileMenuItem{
+	background:url('../icons/document-folder.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-fileManager-deleteFileMenuItem{
+	background:url('../icons/edit-delete.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-fileManager-downloadFileMenuItem{
+	background:url('../icons/internet-download-manager.png') no-repeat center center;
+	width: 16px;
+	height: 16px;
+}
+.platform-management-default{
+	font-size:12px;
+	padding-bottom:2px;
+	text-align:center; 
+	background:#E1EAF3; 
+	color:#000000; 
+	line-height:40px;
+}
+
+.platform-statusTable{
+	width:100%; 
+	height:100%;
+	border-collapse:collapse;
+	border-color:#efefef;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#c9c8aa,endColorStr=#f6f6f8); /*IE*/
+	background:-moz-linear-gradient(left,#c9c8aa,#f6f6f8);/*火狐*/
+	background:-webkit-gradient(linear, 0% 0%, 100% 0%,from(#c9c8aa), to(#f6f6f8));/*谷歌*/ 
+}
+.platform-statusTable td {border-color:#efefef;font-size:15px;padding-left:15px}
+.loadingGif{
+	background:url('../icons/loading.gif') no-repeat center center;
+	z-index:10000;
+	width:100%;
+	height:100%;
+	position: absolute;
+	background-color:#fff;
+}
+.loadingPartGif{
+	background:url('../icons/loading.gif') no-repeat center center;
+	z-index:10000;
+	width:100%;
+	height:100%;
+	position: absolute;
+	background-color:#fff;
+	display:none
+}
