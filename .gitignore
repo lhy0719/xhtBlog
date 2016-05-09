@@ -4,7 +4,6 @@ build
 gen
 bin
 local.properties
-.gradle
 *.apk
 .*.swp
 /.classpath
@@ -15,10 +14,11 @@ local.properties
 gen-external-apklibs/
 target
 classes/
-./gitignore
+gitignore
 project.properties
 signing.properties
 .DS_Store
 out/
+*.iml
 *.ipr
 *.iws
