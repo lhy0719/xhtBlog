@@ -18,7 +18,6 @@ classes/
 ./gitignore
 project.properties
 signing.properties
-*.iml
 .DS_Store
 out/
 *.ipr
