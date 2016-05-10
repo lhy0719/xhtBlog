@@ -39,7 +39,7 @@ public class CommonUserController {
 	public ModelAndView validateKaptchaKey(@RequestParam(value="kaptchaKey",required=true)String kaptchaKey,HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
 		String kaptchaSessionKey=(String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
-		if(kaptchaSessionKey.equals(kaptchaKey)){
+		if(kaptchaSessionKey!=null&&kaptchaSessionKey.equals(kaptchaKey)){
 			mv.addObject("kaptchaResult","true");
 		}else{
 			mv.addObject("kaptchaResult","false");
