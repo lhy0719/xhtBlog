@@ -29,6 +29,31 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 	<import resource="classpath:config/webContext.xml"/>
-	<import resource="classpath:config/appContext-web-user.xml"/>
 	<mvc:view-controller path="/home" view-name="user/index"/>
+	<mvc:view-controller path="/index" view-name="user/index"/>
+	<mvc:view-controller path="/jdgrid" view-name="/user/jdgrid"/>
+	<mvc:view-controller path="/echarts" view-name="/user/echarts"/>
+	<mvc:view-controller path="/echarts1" view-name="/user/echarts1"/>
+	<mvc:view-controller path="/echarts2" view-name="/user/echarts2"/>
+	<mvc:view-controller path="/register" view-name="user/register"/>
+	<mvc:view-controller path="/login" view-name="user/login"/>
+	<context:component-scan base-package="com.lhy.web" use-default-filters="false">
+		<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+	</context:component-scan>
+	<bean id="publicLoginInterceptor" class="com.lhy.web.system.CommonLoginInterceptor">
+		<property name="indexURL" value="/user/login"/>
+	</bean>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/commonUser/*"/>
+			<mvc:exclude-mapping path="/commonUser/goToExcludePortalPage"/>
+			<mvc:exclude-mapping path="/commonUser/registerCommonUser"/>
+			<mvc:exclude-mapping path="/commonUser/commonUserLogin"/>
+			<mvc:exclude-mapping path="/commonUser/generateKeyPair"/>
+			<mvc:exclude-mapping path="/commonUser/validateKaptchaKey"/>
+			<mvc:exclude-mapping path="/commonUser/validateUserAccount"/>
+			<mvc:exclude-mapping path="/commonUser/test"/>
+			<ref bean="publicLoginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

@@ -6,9 +6,13 @@ import java.net.URLDecoder;
 import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -67,7 +71,17 @@ public class CommonUserController {
 		mv.setViewName(viewPath);
 		return mv;
 	}
-	
+
+	@RequestMapping(value = "/test", method = { RequestMethod.GET,RequestMethod.POST })
+	public @ResponseBody String test(@RequestParam(value="paras",required=true)String paras) {
+		System.out.println(paras);
+		Map obj = JSON.parseObject(paras, HashMap.class);
+		JSONObject jsonObject =new JSONObject();
+		jsonObject.put("skuId",obj.get("mdi"));
+		jsonObject.put("recommendPrice",2222);
+		return "{'msg':'hello world'}";
+	}
+
 	@RequestMapping(value = "/goToPortalPage", method = { RequestMethod.GET,RequestMethod.POST })
 	public ModelAndView goToPortalPage(@RequestParam(value="templateName",required=true)String templateName) {
 		ModelAndView mv = new ModelAndView();
