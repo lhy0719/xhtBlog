@@ -69,7 +69,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     <!--视图解析器总配置-->
-    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+    <!--<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="contentNegotiationManager">
             <ref bean="contentNegotiationManager"/>
         </property>
@@ -90,7 +90,7 @@
                 </bean>
             </list>
         </property>
-    </bean>
+    </bean>-->
 
     <!--自定义视图解析器-->
     <bean id="resourceBundleViewResolver"
@@ -100,12 +100,12 @@
         <property name="cache" value="true"/>
     </bean>
     <!--通用视图解析器-->
-    <bean id="viewResolverCommon" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="${org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer.templateLoaderPaths}"/>
+    <!--<bean id="viewResolverCommon" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="#{sysConfig['org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer.templateLoaderPaths']}"/>
         <property name="suffix" value=".jsp"/>
-        <!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑  -->
+        &lt;!&ndash;可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑  &ndash;&gt;
         <property name="order" value="5"/>
-    </bean>
+    </bean>-->
     <!-- velocity视图解析器 -->
     <!--<bean id="velocityConfig"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
@@ -161,7 +161,7 @@
     <bean id="freemarkerConfig"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPaths"
-                  value="${org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer.templateLoaderPaths}"/>
+                  value="#{sysConfig['org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer.templateLoaderPaths']}"/>
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="freemarkerSettings">
             <props>

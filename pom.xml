@@ -687,18 +687,18 @@
         </dependency>
         <!-- TEST end -->
 
-        <!-- User Agent
+        <!-- User Agent-->
         <dependency>
             <groupId>nl.bitwalker</groupId>
             <artifactId>UserAgentUtils</artifactId>
             <version>1.2.4</version>
-        </dependency>-->
+        </dependency>
         <!-- User Agent -->
-        <dependency>
+        <!--<dependency>
             <groupId>bitwalker</groupId>
             <artifactId>UserAgentUtils</artifactId>
             <version>1.13</version>
-        </dependency>
+        </dependency>-->
         <!-- kaptcha -->
         <dependency>
             <groupId>com.google.code</groupId>

@@ -3,9 +3,9 @@
  */
 package com.lhy.commons.utils;
 
-import eu.bitwalker.useragentutils.Browser;
-import eu.bitwalker.useragentutils.DeviceType;
-import eu.bitwalker.useragentutils.UserAgent;
+import nl.bitwalker.useragentutils.Browser;
+import nl.bitwalker.useragentutils.DeviceType;
+import nl.bitwalker.useragentutils.UserAgent;
 
 import javax.servlet.http.HttpServletRequest;
 
