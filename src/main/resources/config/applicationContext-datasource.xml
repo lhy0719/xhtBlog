@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+	<import resource="classpath:config/embedDBContext.xml"/>
+	<bean id="platformDataSource" name="platformDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${hibernate.connection.driver_class}" />
+		<property name="url" value="${hibernate.connection.url}" />
+		<property name="username" value="${hibernate.connection.username}" />
+		<property name="password" value="${hibernate.connection.password}" />
+	</bean>	
+	<bean id="nativeJdbcExtractor" name="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor" />
+	<bean id="defaultLobHandler" name="defaultLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+	<bean id="platformSessionFactory" name="platformSessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="configLocation" value="classpath:config/hibernate.cfg.xml" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.search.default.directory_provider">filesystem</prop>
+				<prop key="hibernate.search.default.indexBase">var/lucene/indexes</prop>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.query.factory_class">${hibernate.query.factory_class}</prop>
+				<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+			</props>
+		</property>
+		<property name="dataSource" ref="platformDataSource" />
+		<property name="lobHandler" ref="defaultLobHandler" />
+	</bean>
+	<bean id="platformJdbcTemplate" name="platformJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" c:dataSource-ref="platformDataSource"/>
+	<bean id="platformNamedParameterJdbcTemplate" name="platformNamedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" c:dataSource-ref="platformDataSource" scope="prototype"/>
+	<bean id="platformHibernateTemplate" name="platformHibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" c:sessionFactory-ref="platformSessionFactory">
+		<property name="allowCreate" value="true" />
+		<property name="cacheQueries" value="true" />
+	</bean>
+	<bean id="hibernateTransactionManager" name="platformHibernateTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="platformSessionFactory" />
+		<property name="dataSource" ref="platformDataSource" />
+		<qualifier value="hibernateTransactionManager"/>
+	</bean>
+	<bean id="jdbcTransactionManager" name="platformJdbcTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="platformDataSource" />
+		<qualifier value="jdbcTransactionManager"/>
+	</bean>
+</beans>
