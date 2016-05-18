@@ -3,14 +3,14 @@
 <html>
 <head>
 <title>用户登录</title>
-<#include "/html_meta.ftl" parse=true encoding="UTF-8">
-<#include "/portal_headCSS.ftl" parse=true encoding="UTF-8">
-<#include "/portal_headJS.ftl" parse=true encoding="UTF-8">
+<#include "../html_meta.ftl" parse=true encoding="UTF-8">
+<#include "../portal_headCSS.ftl" parse=true encoding="UTF-8">
+<#include "../portal_headJS.ftl" parse=true encoding="UTF-8">
 <script type="text/javascript"
-	src="<@spring.url ''/>/scripts/user/login.js"></script>
-<script type="text/javascript" src="<@spring.url ''/>/js/rsa/Barrett.js"></script>
-<script type="text/javascript" src="<@spring.url ''/>/js/rsa/BigInt.js"></script>
-<script type="text/javascript" src="<@spring.url ''/>/js/rsa/RSA.js"></script>
+	src="<@spring.url ''/>/ui/resources/js/user/login.js"></script>
+<script type="text/javascript" src="<@spring.url ''/>/thirdlib/rsa/Barrett.js"></script>
+<script type="text/javascript" src="<@spring.url ''/>/thirdlib/rsa/BigInt.js"></script>
+<script type="text/javascript" src="<@spring.url ''/>/thirdlib/rsa/RSA.js"></script>
 </head>
 <body class="f12">
 	<!-- 最新公告 -->
@@ -42,7 +42,7 @@
 			</p>
 			<p>
 				<label>
-				<input class="submit" type="submit" id="loginBtn" value="登录"></input>
+				<input class="submit" type="submit" id="loginBtn" value="登录"/>
 				</label>
 			</p>
 			<p>

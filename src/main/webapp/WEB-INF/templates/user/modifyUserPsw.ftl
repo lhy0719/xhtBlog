@@ -3,10 +3,10 @@
 <html>
 <head>
 <title>修改用户密码</title>
-<#include "/html_meta.ftl" parse=true encoding="UTF-8">
-<#include "/portal_headCSS.ftl" parse=true encoding="UTF-8">
-<#include "/portal_headJS.ftl" parse=true encoding="UTF-8">encoding="UTF-8">
-<script type="text/javascript" src="<@spring.url ''/>/scripts/user/modifyUserPsw.js"></script>
+<#include "../html_meta.ftl" parse=true encoding="UTF-8">
+<#include "../portal_headCSS.ftl" parse=true encoding="UTF-8">
+<#include "../portal_headJS.ftl" parse=true encoding="UTF-8">encoding="UTF-8">
+<script type="text/javascript" src="<@spring.url ''/>/ui/resources/js/user/modifyUserPsw.js"></script>
 </head>
 <body class="fs f12">
 			<div class="login_page">

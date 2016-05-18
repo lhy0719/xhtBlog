@@ -3,10 +3,10 @@
 <html>
 <head>
 <title>修改用户信息</title>
-<#include "/html_meta.ftl" parse=true encoding="UTF-8">
-<#include "/portal_headCSS.ftl" parse=true encoding="UTF-8">
-<#include "/portal_headJS.ftl" parse=true encoding="UTF-8">
-<script type="text/javascript" src="<@spring.url ''/>/scripts/user/modifyUserInfo.js"></script>
+<#include "../html_meta.ftl" parse=true encoding="UTF-8">
+<#include "../portal_headCSS.ftl" parse=true encoding="UTF-8">
+<#include "../portal_headJS.ftl" parse=true encoding="UTF-8">
+<script type="text/javascript" src="<@spring.url ''/>/ui/resources/js/user/modifyUserInfo.js"></script>
 </head>
 <body class="fs f12">
 			<div class="login_page">
@@ -30,7 +30,7 @@
 		        <input type="email" id="commonUserMail" name="commonUserMail" class="form-control" value="${commonUser.commonUserMail}">
 		        </p>
 		        <p>
-		        <input class="submit" type="submit" value="确认修改"></input>
+		        <input class="submit" type="submit" value="确认修改"/>
 		        </p>
 		      </form>
 		      </#if>

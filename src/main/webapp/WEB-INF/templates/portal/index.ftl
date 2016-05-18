@@ -1,3 +1,4 @@
+<#-- @ftlroot ".." -->
 <#import "/spring.ftl" as spring />
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,7 @@
 <header class="am-topbar am-topbar-fixed-top">
     <div class="am-container">
         <h1 class="am-topbar-brand">
-            <a href="#">Amaze UI</a>
+            <a href="#">妹妹的国</a>
         </h1>
 
         <div class="am-topbar-collapse" id="collapse-head">
@@ -101,7 +102,7 @@
 <div class="hope">
     <div class="am-g am-container">
         <div class="am-u-sm-6 hope-img">
-            <img src="assets/i/examples/landing.png" alt="" data-am-scrollspy="{animation:'slide-left', repeat: false}">
+            <img src="<@spring.url ""/>/ui/amazeUI/assets/i/examples/landing.png" alt="" data-am-scrollspy="{animation:'slide-left', repeat: false}">
             <hr class="am-article-divider am-show-sm-only hope-hr">
         </div>
         <div class="am-u-sm-6">
@@ -147,14 +148,7 @@
         </div>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="am-container">
-        <p>© 2014 <a href="http://www.yunshipei.com" target="_blank">AllMobilize, Inc.</a> Licensed under <a
-                href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. by the AmazeUI Team.</p>
-    </div>
-</footer>
-
+<#include "/portal_commonFooter.ftl" parse=true encoding="UTF-8">
 <#include "/portal_headJS.ftl" parse=true encoding="UTF-8">
 </body>
 </html>

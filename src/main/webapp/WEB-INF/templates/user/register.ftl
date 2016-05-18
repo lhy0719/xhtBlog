@@ -3,10 +3,10 @@
 <html>
 <head>
 <title>用户注册</title>
-<#include "/html_meta.ftl" parse=true encoding="UTF-8">
-<#include "/portal_headCSS.ftl" parse=true encoding="UTF-8">
-<#include "/portal_headJS.ftl" parse=true encoding="UTF-8">
-<script type="text/javascript" src="<@spring.url ''/>/scripts/user/register.js"></script>
+<#include "../html_meta.ftl" parse=true encoding="UTF-8">
+<#include "../portal_headCSS.ftl" parse=true encoding="UTF-8">
+<#include "../portal_headJS.ftl" parse=true encoding="UTF-8">
+<script type="text/javascript" src="<@spring.url ''/>/ui/resources/js/user/register.js"></script>
 <script type="text/javascript">
 var webAppBasePath="<@spring.url ''/>";
 </script>

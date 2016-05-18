@@ -1,15 +1,16 @@
+<#-- @ftlroot ".." -->
 <#import "/spring.ftl" as spring />
 <!DOCTYPE html>
 <html>
 <head>
-	<title>妹妹的国</title>
-	<#include "/html_meta.ftl" parse=true encoding="UTF-8">
-	<#include "/portal_headCSS.ftl" parse=true encoding="UTF-8">
+    <title>妹妹的国</title>
+<#include "/html_meta.ftl" parse=true encoding="UTF-8">
+<#include "/portal_headCSS.ftl" parse=true encoding="UTF-8">
 </head>
 <body>
 <header class="am-topbar">
     <h1 class="am-topbar-brand">
-        <a href="#">blog</a>
+        <a href="#">妹妹的国</a>
     </h1>
 
     <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
@@ -19,16 +20,16 @@
     <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav">
             <li class="am-active"><a href="#">首页</a></li>
-            <li><a href="#">项目</a></li>
+            <li><a href="#">生活点滴</a></li>
+            <li><a href="#">技术前沿</a></li>
+            <li><a href="#">大神日记</a></li>
             <li class="am-dropdown" data-am-dropdown>
                 <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-                    菜单 <span class="am-icon-caret-down"></span>
+                    关于 <span class="am-icon-caret-down"></span>
                 </a>
                 <ul class="am-dropdown-content">
-                    <li class="am-dropdown-header">标题</li>
-                    <li><a href="#">关于我们</a></li>
-                    <li><a href="#">关于字体</a></li>
-                    <li><a href="#">TIPS</a></li>
+                    <li><a href="#">关于我</a></li>
+                    <li><a href="#">关于她</a></li>
                 </ul>
             </li>
         </ul>
@@ -49,7 +50,8 @@
             <h3 class="am-article-title blog-title">
                 <a href="#">Google fonts 的字體（display 篇）</a>
             </h3>
-            <h4 class="am-article-meta blog-meta">by <a href="">open</a> posted on 2014/06/17 under <a href="#">字体</a></h4>
+            <h4 class="am-article-meta blog-meta">by <a href="">open</a> posted on 2014/06/17 under <a href="#">字体</a>
+            </h4>
 
             <div class="am-g blog-content">
                 <div class="am-u-lg-7">
@@ -61,7 +63,6 @@
                         Roman，而是很少有人見過的，你精心挑選過的字體，凸顯你品味的高超。而且它並沒有花上你與業主一毛錢，或許這也非常重要。</p>
                 </div>
                 <div class="am-u-lg-5">
-                    <p><img src="http://f.cl.ly/items/451O3X0g47320D203D1B/不夠活潑.jpg"></p>
                 </div>
             </div>
             <div class="am-g">
@@ -87,7 +88,8 @@
                     <p><!--本demo文字来自 http://blog.justfont.com/--> 这次要介绍的是大家似乎都狠熟悉却又狠陌生的字体：Arial。不只是对 Typography
                         特别有兴趣的人、碰过排版的人，就算毫无接触，只要打开过电脑的字型选单，应该都有看过这个字型吧。尤其它还是以 A 开头，总是会出现在选单最前面。</p>
 
-                    <p>Arial 常常跟 Helvetica 搞混，也常被当作是没有 Helvetica 时的替代字体使用。事实上 Arial 确实就是故意做得跟 Helvetica 狠相似，连每个字母的宽度都刻意做得一模一样。</p>
+                    <p>Arial 常常跟 Helvetica 搞混，也常被当作是没有 Helvetica 时的替代字体使用。事实上 Arial 确实就是故意做得跟 Helvetica
+                        狠相似，连每个字母的宽度都刻意做得一模一样。</p>
                 </div>
                 <div class="am-u-lg-5">
                     <p><img src="https://farm3.staticflickr.com/2917/14186214720_5d0b8ca2e3_b.jpg"></p>
@@ -117,7 +119,8 @@
             <section class="am-panel am-panel-default">
                 <div class="am-panel-hd">关于我</div>
                 <div class="am-panel-bd">
-                    <p>前所未有的中文云端字型服务，让您在 web 平台上自由使用高品质中文字体，跨平台、可搜寻，而且超美。云端字型是我们的事业，推广字型学知识是我们的志业。从字体出发，关心设计与我们的生活，justfont blog
+                    <p>前所未有的中文云端字型服务，让您在 web
+                        平台上自由使用高品质中文字体，跨平台、可搜寻，而且超美。云端字型是我们的事业，推广字型学知识是我们的志业。从字体出发，关心设计与我们的生活，justfont blog
                         正是為此而生。</p>
                     <a class="am-btn am-btn-success am-btn-sm" href="#">查看更多 →</a>
                 </div>
@@ -138,30 +141,6 @@
                 <div class="am-panel-hd">团队成员</div>
                 <div class="am-panel-bd">
                     <ul class="am-avg-sm-4 blog-team">
-                        <li><img class="am-thumbnail"
-                                 src="http://img4.duitang.com/uploads/blog/201406/15/20140615230220_F5LiM.thumb.224_0.jpeg" alt=""/>
-                        </li>
-                        <li><img class="am-thumbnail"
-                                 src="http://img4.duitang.com/uploads/blog/201406/15/20140615230220_F5LiM.thumb.224_0.jpeg" alt=""/>
-                        </li>
-                        <li><img class="am-thumbnail"
-                                 src="http://img4.duitang.com/uploads/blog/201406/15/20140615230220_F5LiM.thumb.224_0.jpeg" alt=""/>
-                        </li>
-                        <li><img class="am-thumbnail"
-                                 src="http://img4.duitang.com/uploads/blog/201406/15/20140615230220_F5LiM.thumb.224_0.jpeg" alt=""/>
-                        </li>
-                        <li><img class="am-thumbnail"
-                                 src="http://img4.duitang.com/uploads/blog/201406/15/20140615230159_kjTmC.thumb.224_0.jpeg" alt=""/>
-                        </li>
-                        <li><img class="am-thumbnail"
-                                 src="http://img4.duitang.com/uploads/blog/201406/15/20140615230220_F5LiM.thumb.224_0.jpeg" alt=""/>
-                        </li>
-                        <li><img class="am-thumbnail"
-                                 src="http://img4.duitang.com/uploads/blog/201406/15/20140615230220_F5LiM.thumb.224_0.jpeg" alt=""/>
-                        </li>
-                        <li><img class="am-thumbnail"
-                                 src="http://img4.duitang.com/uploads/blog/201406/15/20140615230159_kjTmC.thumb.224_0.jpeg" alt=""/>
-                        </li>
                     </ul>
                 </div>
             </section>
@@ -169,13 +148,7 @@
     </div>
 
 </div>
-
-<footer class="blog-footer">
-    <p>blog template<br/>
-        <small>© Copyright XXX. by the AmazeUI Team.</small>
-    </p>
-</footer>
-
+<#include "/portal_commonFooter.ftl" parse=true encoding="UTF-8">
 <#include "/portal_headJS.ftl" parse=true encoding="UTF-8">
 </body>
 </html>

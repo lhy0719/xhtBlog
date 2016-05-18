@@ -7,14 +7,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
 
-    <!--spring mvc 开启使用注解的方式进行URL路由配置-->
-    <mvc:annotation-driven/>
     <!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
     <mvc:default-servlet-handler/>
-    <!-- 静态资源映射 -->
-    <mvc:resources mapping="/static/**" location="/thirdlib,/ui" cache-period="31536000"/>
     <!-- 定义无Controller的path<->view直接映射 -->
-    <mvc:view-controller path="/" view-name="redirect:${web.view.index}"/>
+    <mvc:view-controller path="/" view-name="redirect:/login"/>
     <context:component-scan base-package="com.lhy.web.commons" use-default-filters="false">
         <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
         <context:include-filter expression="org.springframework.stereotype.Component" type="annotation"/>
@@ -26,6 +22,9 @@
             <map>
                 <entry key="xml" value="application/xml"/>
                 <entry key="json" value="application/json"/>
+                <entry key="html" value="text/html" />
+                <entry key="pdf" value="application/pdf" />
+                <entry key="xsl" value="application/vnd.ms-excel" />
             </map>
         </property>
         <property name="ignoreAcceptHeader" value="true"/>
@@ -33,7 +32,7 @@
     </bean>
 
     <!-- 默认的注解映射的支持，org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -->
-    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+    <mvc:annotation-driven  content-negotiation-manager="contentNegotiationManager">
         <mvc:message-converters register-defaults="true">
             <!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -69,15 +68,12 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     <!--视图解析器总配置-->
-    <!--<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="contentNegotiationManager">
-            <ref bean="contentNegotiationManager"/>
-        </property>
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="viewResolvers">
             <list>
                 <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
                 <ref bean="freemarkerViewResolver"/>
-                <ref bean="viewResolverCommon"/>
+                <ref bean="jspViewResolver"/>
             </list>
         </property>
         <property name="defaultViews">
@@ -90,26 +86,25 @@
                 </bean>
             </list>
         </property>
-    </bean>-->
+    </bean>
 
     <!--自定义视图解析器-->
     <bean id="resourceBundleViewResolver"
           class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
         <property name="basename" value="views"/>
-        <property name="order" value="4"/>
+        <property name="order" value="5"/>
         <property name="cache" value="true"/>
     </bean>
     <!--通用视图解析器-->
-    <!--<bean id="viewResolverCommon" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="#{sysConfig['org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer.templateLoaderPaths']}"/>
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/templates/"/>
+        <property name="order" value="4"/>
         <property name="suffix" value=".jsp"/>
-        &lt;!&ndash;可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑  &ndash;&gt;
-        <property name="order" value="5"/>
-    </bean>-->
+    </bean>
     <!-- velocity视图解析器 -->
     <!--<bean id="velocityConfig"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <property name="resourceLoaderPath" value="${org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer.templateLoaderPaths}"/>
+        <property name="resourceLoaderPath" value="/WEB-INF/vm/"/>
         <property name="velocityProperties">
             <props>
                 <prop key="input.encoding">UTF-8</prop>
@@ -121,6 +116,7 @@
           class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
         <property name="cache" value="true"/>
         <property name="prefix" value=""/>
+        <property name="order" value="5"/>
         <property name="layoutUrl" value="/layout/layout.vm"/>
         <property name="suffix" value=".vm"/>
         <property name="contentType" value="text/html;charset=UTF-8"/>
