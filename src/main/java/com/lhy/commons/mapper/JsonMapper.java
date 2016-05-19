@@ -150,6 +150,7 @@ public class JsonMapper extends ObjectMapper {
 	 * HashMap<String,MyBean>, 则调用(HashMap.class,String.class, MyBean.class)
 	 */
 	public JavaType createCollectionType(Class<?> collectionClass, Class<?>... elementClasses) {
+		//noinspection deprecation
 		return this.getTypeFactory().constructParametricType(collectionClass, elementClasses);
 	}
 
